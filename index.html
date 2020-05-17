@@ -3,21 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Weather Dashboard</title>
+
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="container">
-      <div class="row">Weather Dashboard</div>
+      <div class="row" id="headertag">
+        <h1>Dashboard</h1>
+      </div>
       <div class="row">
         <div class="col-sm-3">
+          <input type="text" id="weatherSearch" />
           <button type="button" class="btn btn-primary" id="search">
-            Primary
+            search
           </button>
         </div>
         <div class="col-sm-9">
@@ -31,8 +36,6 @@
           </div>
         </div>
       </div>
-
-      <button type="button" class="btn btn-primary" id="search">Primary</button>
     </div>
     <script
       src="https://code.jquery.com/jquery-3.5.0.min.js"
@@ -43,7 +46,8 @@
       $("#search").on("click", (event) => {
         event.preventDefault();
         var api_key = "1384bf835c453fb5bffc8add6fc4d5d5";
-        var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${api_key}`;
+        var weatherSearch = document.querySelector("#weatherSearch").value;
+        var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${weatherSearch}&appid=${api_key}`;
 
         $.get(queryURL).then((response) => {
           console.log(response);
