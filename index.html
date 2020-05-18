@@ -16,23 +16,33 @@
   <body>
     <div class="container">
       <div class="row" id="headertag">
-        <h1>Dashboard</h1>
+        <h1>Weather Dashboard</h1>
       </div>
       <div class="row">
-        <div class="col-sm-3">
+        <div class="col-xs-3 classGreen">
           <input type="text" id="weatherSearch" />
           <button type="button" class="btn btn-primary" id="search">
             search
           </button>
         </div>
-        <div class="col-sm-9">
-          <div class="row"></div>
+        <div class="col-xs-9 classGreen">
+          <div class="row" id="citySearched">
+            <div id="cityNDate"></div>
+            <br />
+            <div id="temp0"></div>
+            <br />
+            <div id="humid0"></div>
+            <br />
+            <div id="windSpeed"></div>
+            <br />
+            <div id="UVindex"></div>
+          </div>
           <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-2"></div>
+            <div class="col-xs-2"></div>
+            <div class="col-xs-2"></div>
+            <div class="col-xs-2"></div>
+            <div class="col-xs-2"></div>
+            <div class="col-xs-2"></div>
           </div>
         </div>
       </div>
@@ -42,14 +52,30 @@
       integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
       crossorigin="anonymous"
     ></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
     <script>
       $("#search").on("click", (event) => {
         event.preventDefault();
+
         var api_key = "1384bf835c453fb5bffc8add6fc4d5d5";
         var weatherSearch = document.querySelector("#weatherSearch").value;
-        var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${weatherSearch}&appid=${api_key}`;
 
-        $.get(queryURL).then((response) => {
+        var queryURL1 = `https://api.openweathermap.org/data/2.5/weather?q=${weatherSearch}&appid=${api_key}`;
+
+        $.get(queryURL1).then((response) => {
+          console.log(response);
+          $("#cityNDate").text(
+            response.name + "(" + moment().format("l") + ")"
+          );
+
+          var cityTempF = (response.main.temp - 273.15) * 1.8 + 32;
+
+          $("#temp0").text("Tempterature:" + cityTempF.toFixed(2) + "F");
+        });
+
+        var queryURL2 = `https://api.openweathermap.org/data/2.5/forecast?q=${weatherSearch}&appid=${api_key}`;
+
+        $.get(queryURL2).then((response) => {
           console.log(response);
         });
       });
