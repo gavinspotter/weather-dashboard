@@ -34,34 +34,34 @@
           <div class="row" id="UVindex"></div>
 
           <div class="row">
-            <div class="col-xs-2" id="weatheDay1">
-              <div class="row"></div>
-              <div class="row"></div>
-              <div class="row"></div>
-              <div class="row"></div>
-            </div>
-            <div class="col-xs-2" id="weatheDay2">
-              <div class="row"></div>
-              <div class="row"></div>
-              <div class="row"></div>
+            <div id="dayCard">
+              <div class="row" id="weatherDate1"></div>
+              <div class="row" id=""></div>
+              <div class="row" id="temper1"></div>
               <div class="row"></div>
             </div>
-            <div class="col-xs-2" id="weatheDay3">
+            <div id="dayCard">
+              <div class="row" id="weatherDate2"></div>
               <div class="row"></div>
-              <div class="row"></div>
-              <div class="row"></div>
-              <div class="row"></div>
-            </div>
-            <div class="col-xs-2" id="weatheDay4">
-              <div class="row"></div>
-              <div class="row"></div>
-              <div class="row"></div>
+              <div class="row" id="temper2"></div>
               <div class="row"></div>
             </div>
-            <div class="col-xs-2" id="weatheDay5">
+            <div id="dayCard">
+              <div class="row" id="weatherDate3"></div>
               <div class="row"></div>
+              <div class="row" id="temper3"></div>
               <div class="row"></div>
+            </div>
+            <div id="dayCard">
+              <div class="row" id="weatherDate4"></div>
               <div class="row"></div>
+              <div class="row" id="temper4"></div>
+              <div class="row"></div>
+            </div>
+            <div id="dayCard">
+              <div class="row" id="weatherDate5"></div>
+              <div class="row"></div>
+              <div class="row" id="temper5"></div>
               <div class="row"></div>
             </div>
           </div>
@@ -110,7 +110,28 @@
         $.get(queryURL3).then((response) => {
           console.log(response);
 
-          $("#");
+          $("#weatherDate1").text(moment().add(1, "days").format("L"));
+
+          $("#weatherDate2").text(moment().add(2, "days").format("L"));
+
+          $("#weatherDate3").text(moment().add(3, "days").format("L"));
+
+          $("#weatherDate4").text(moment().add(4, "days").format("L"));
+
+          $("#weatherDate5").text(moment().add(5, "days").format("L"));
+
+          var temperatureDay1 =
+            (response.list[2].main.temp - 273.15) * 1.8 + 32;
+
+          $("#temper1").text(temperatureDay1 + "F");
+
+          $("#temper2");
+
+          $("#temper3");
+
+          $("#temper4");
+
+          $("#temper5");
         });
       });
     </script>
