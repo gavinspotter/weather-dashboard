@@ -123,15 +123,26 @@
           var temperatureDay1 =
             (response.list[2].main.temp - 273.15) * 1.8 + 32;
 
-          $("#temper1").text(temperatureDay1 + "F");
+          $("#temper1").text(temperatureDay1.toFixed(2) + "F");
 
-          $("#temper2");
+          var temperatureDay2 =
+            (response.list[10].main.temp - 273.15) * 1.8 + 32;
 
-          $("#temper3");
+          $("#temper2").text(temperatureDay2.toFixed(2) + "F");
 
-          $("#temper4");
+          var temperatureDay3 =
+            (response.list[18].main.temp - 273.15) * 1.8 + 32;
 
-          $("#temper5");
+          $("#temper3").text(temperatureDay3.toFixed(2) + "F");
+
+          var temperatureDay4 =
+            (response.list[26].main.temp - 273.15) * 1.8 + 32;
+
+          $("#temper4").text(temperatureDay4.toFixed(2) + "F");
+
+          var temperatureDay5 =
+            (response.list[34].main.temp - 273.15) * 1.8 + 32;
+          $("#temper5").text(temperatureDay5.toFixed(2) + "F");
         });
       });
     </script>
