@@ -38,31 +38,31 @@
               <div class="row" id="weatherDate1"></div>
               <div class="row" id=""></div>
               <div class="row" id="temper1"></div>
-              <div class="row"></div>
+              <div class="row" id="humid1"></div>
             </div>
             <div id="dayCard">
               <div class="row" id="weatherDate2"></div>
               <div class="row"></div>
               <div class="row" id="temper2"></div>
-              <div class="row"></div>
+              <div class="row" id="humid2"></div>
             </div>
             <div id="dayCard">
               <div class="row" id="weatherDate3"></div>
               <div class="row"></div>
               <div class="row" id="temper3"></div>
-              <div class="row"></div>
+              <div class="row" id="humid3"></div>
             </div>
             <div id="dayCard">
               <div class="row" id="weatherDate4"></div>
               <div class="row"></div>
               <div class="row" id="temper4"></div>
-              <div class="row"></div>
+              <div class="row" id="humid4"></div>
             </div>
             <div id="dayCard">
               <div class="row" id="weatherDate5"></div>
               <div class="row"></div>
               <div class="row" id="temper5"></div>
-              <div class="row"></div>
+              <div class="row" id="humid5"></div>
             </div>
           </div>
         </div>
@@ -143,6 +143,23 @@
           var temperatureDay5 =
             (response.list[34].main.temp - 273.15) * 1.8 + 32;
           $("#temper5").text(temperatureDay5.toFixed(2) + "F");
+
+          var humidityDay1 = response.list[2].main.humidity;
+
+          $("#humid1").text(humidityDay1 + "%");
+
+          var humidityDay2 = response.list[10].main.humidity;
+
+          $("#humid2").text(humidityDay2 + "%");
+          var humidityDay3 = response.list[18].main.humidity;
+
+          $("#humid3").text(humidityDay3 + "%");
+          var humidityDay4 = response.list[26].main.humidity;
+
+          $("#humid4").text(humidityDay4 + "%");
+          var humidityDay5 = response.list[34].main.humidity;
+
+          $("#humid5").text(humidityDay5 + "%");
         });
       });
     </script>
