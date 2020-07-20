@@ -24,6 +24,7 @@
           <button type="button" class="btn btn-primary" id="search">
             search
           </button>
+          <div id="arPush"></div>
         </div>
         <div class="col-xs-9 classGreen">
           <div class="row" id="citySearched"></div>
@@ -75,9 +76,27 @@
     ></script>
     <script src="https://momentjs.com/downloads/moment.js"></script>
     <script>
+      var arr = [];
+      var weathSearch = document.querySelector("#weatherSearch");
+      var arPush = document.querySelector("#arPush");
+
       $("#search").on("click", (event) => {
+        arr.push(weathSearch.value);
+        arPush.textContent = "";
+        arr.forEach((ar) => {
+          var arOnClick = (arPush.innerHTML +=
+            "<button>" + ar + "</button><br>");
+            arOnClick.addEventListener("click", ()=>{
+                
+            })
+        });
+
         event.preventDefault();
 
+        apiFun();
+      });
+
+      var apiFun = () => {
         var api_key = "1384bf835c453fb5bffc8add6fc4d5d5";
         var weatherSearch = document.querySelector("#weatherSearch").value;
 
@@ -160,8 +179,10 @@
           var humidityDay5 = response.list[34].main.humidity;
 
           $("#humid5").text(humidityDay5 + "%");
+
+          weathSearch.value = "";
         });
-      });
+      };
     </script>
   </body>
 </html>
